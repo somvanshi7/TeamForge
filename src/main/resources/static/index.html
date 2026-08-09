@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamForge | Internal Talent Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- ============================================================
+         MARKETING / LANDING PAGE (shown before login)
+         ============================================================ -->
+    <div class="landing-container" id="landingContainer">
+        <header class="landing-header">
+            <div class="logo">
+                <span class="material-symbols-outlined logo-icon" style="font-size: 2rem;">webhook</span>
+                <h1 style="font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--primary-light), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">TeamForge</h1>
+            </div>
+            <nav class="landing-nav">
+                <a href="#customers">Companies using TeamForge</a>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <button class="btn-primary" onclick="openLoginModal()">Login</button>
+            </nav>
+        </header>
+
+        <main>
+            <section class="landing-hero">
+                <div class="hero-text">
+                    <h1>How can TeamForge help you?</h1>
+                    <p>Unlock the power of your workforce. Track skills, spot the gaps before they hurt a project, and assemble the right team for the job in minutes instead of days.</p>
+                    <div class="hero-actions">
+                        <button class="btn-primary" style="font-size: 1rem; padding: 0.8rem 1.75rem;" onclick="openRegisterModal()">Get Started</button>
+                        <button class="btn-secondary" style="font-size: 1rem; padding: 0.8rem 1.75rem;" onclick="openLoginModal()">Book a Demo</button>
+                    </div>
+                </div>
+                <div class="hero-video-card glass-panel">
+                    <div class="hero-video-placeholder" onclick="alert('Demo video coming soon!')">
+                        <span class="material-symbols-outlined" style="font-size: 3.5rem; color: var(--primary-light);">play_circle</span>
+                        <p style="margin-top: 0.75rem; color: var(--text-muted); font-size: 0.9rem;">Watch the 2-minute overview</p>
+                    </div>
+                    <div class="video-desc">
+                        <h4>See TeamForge in action</h4>
+                        <p>A quick walkthrough of how HR and engineering managers use TeamForge to log skills, staff new projects, and plan hiring around real skill gaps &mdash; not guesswork.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trust-strip" id="customers">
+                <p class="trust-label">Trusted by teams at</p>
+                <div class="trust-logos">
+                    <span class="trust-logo-chip">Nimbus Retail Co.</span>
+                    <span class="trust-logo-chip">Arcadia Systems</span>
+                    <span class="trust-logo-chip">Vertex Manufacturing</span>
+                    <span class="trust-logo-chip">BluePeak Logistics</span>
+                    <span class="trust-logo-chip">Meridian Health</span>
+                </div>
+            </section>
+
+            <section class="landing-section" id="features">
+                <h2 class="section-title">One place to see your whole workforce</h2>
+                <p class="section-subtitle">TeamForge connects the dots between the skills your people actually have, the skills your projects need, and the skills the market is asking for.</p>
+                <div class="feature-grid">
+                    <div class="card feature-card">
+                        <span class="material-symbols-outlined">category</span>
+                        <h4>Skill Intelligence</h4>
+                        <p>Every employee logs their own skills and proficiency, so you always know who can do what &mdash; instead of relying on memory or resumes.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <span class="material-symbols-outlined">group</span>
+                        <h4>Smart Team Matching</h4>
+                        <p>Attach a required tech stack to a project and TeamForge finds every employee who qualifies &mdash; including people wrapping up other work within the week.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <span class="material-symbols-outlined">trending_up</span>
+                        <h4>Skill Gap Forecasting</h4>
+                        <p>The moment a project needs a skill nobody has, TeamForge flags it as a gap &mdash; so your next hiring round targets exactly what the business needs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="landing-section" id="about" style="padding-top: 0;">
+                <h2 class="section-title">About TeamForge</h2>
+                <p class="section-subtitle" style="margin-bottom: 0;">TeamForge is an internal talent intelligence platform built for HR teams and engineering/project managers. It replaces spreadsheets and tribal knowledge with a live, searchable picture of who can do what, who's free, and what your organization should be hiring for next.</p>
+            </section>
+        </main>
+
+        <footer class="landing-footer">
+            <span>&copy; 2026 TeamForge. Built for internal workforce intelligence.</span>
+            <span>Not affiliated with any third party.</span>
+        </footer>
+    </div>
+
+    <!-- ============================================================
+         AUTH MODAL
+         ============================================================ -->
+    <dialog id="authModal" class="glass-modal">
+        <div class="modal-content">
+            <h2 id="authTitle">Welcome to TeamForge</h2>
+            <p class="subtitle" id="authSubtitle">Log in to manage your talent profile</p>
+
+            <p class="form-error" id="authError"></p>
+
+            <form id="authForm">
+                <div class="input-group" id="nameGroup" style="display: none;">
+                    <span class="material-symbols-outlined">person</span>
+                    <input type="text" id="fullName" placeholder="Full Name">
+                </div>
+                <div class="input-group">
+                    <span class="material-symbols-outlined">mail</span>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <span class="material-symbols-outlined">lock</span>
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="btn-primary" id="authSubmit" style="width: 100%; justify-content: center;">Log In</button>
+            </form>
+
+            <div class="auth-toggle">
+                <span id="authToggleText">Don't have an account?</span>
+                <button id="authToggleBtn" type="button">Register</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- ============================================================
+         APP SHELL (shown after login)
+         ============================================================ -->
+    <div class="app-container" style="display: none;" id="appContainer">
+
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <span class="material-symbols-outlined logo-icon">webhook</span>
+                <h1>TeamForge</h1>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#dashboard" class="nav-item active" data-target="dashboard">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+                <a href="#catalog" class="nav-item" data-target="catalog">
+                    <span class="material-symbols-outlined">category</span>
+                    Skill Catalog
+                </a>
+                <a href="#talent" class="nav-item rbac-manager" data-target="talent">
+                    <span class="material-symbols-outlined">group</span>
+                    Talent Search
+                </a>
+                <a href="#projects" class="nav-item" data-target="projects">
+                    <span class="material-symbols-outlined">work</span>
+                    Projects
+                </a>
+                <a href="#profile" class="nav-item" data-target="profile">
+                    <span class="material-symbols-outlined">badge</span>
+                    My Profile
+                </a>
+            </nav>
+
+            <div class="user-widget">
+                <div class="avatar">
+                    <span class="material-symbols-outlined">person</span>
+                </div>
+                <div class="user-info">
+                    <span id="displayUserName" class="user-name">User</span>
+                    <span id="displayUserRole" class="user-role">Role</span>
+                </div>
+                <button id="logoutBtn" class="icon-btn" title="Logout">
+                    <span class="material-symbols-outlined">logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header glass-panel">
+                <h2 id="pageTitle">Dashboard</h2>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="text" id="globalSearchInput" placeholder="Quick search..." oninput="handleQuickSearch(this.value)">
+                    </div>
+                </div>
+                <div class="header-right" id="headerDate"></div>
+            </header>
+
+            <div class="content-area">
+
+                <!-- ============ DASHBOARD (metrics + welcome only) ============ -->
+                <section id="section-dashboard" class="page-section active">
+                    <div class="welcome-banner card">
+                        <div>
+                            <h2 id="welcomeHeading">Welcome back</h2>
+                            <p id="welcomeSubtext">Here's what's happening across TeamForge today.</p>
+                        </div>
+                        <div class="welcome-date" id="welcomeDate"></div>
+                    </div>
+
+                    <div class="stats-grid" id="dashboardStatsGrid">
+                        <button class="stat-card card" onclick="navigateTo('detail-projects')">
+                            <h3>Active Projects</h3>
+                            <div class="stat-value" id="statActiveProjects">--</div>
+                            <p class="stat-subtext"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span> Click to view project progress</p>
+                        </button>
+                        <button class="stat-card card" onclick="navigateTo('detail-skillset')">
+                            <h3>Skillset Count</h3>
+                            <div class="stat-value" id="statTotalSkills">--</div>
+                            <p class="stat-subtext"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span> Click to view skillset chart</p>
+                        </button>
+                        <button class="stat-card card" onclick="navigateTo('detail-skillgap')">
+                            <h3>Skill Gap Count</h3>
+                            <div class="stat-value" id="statSkillGap">--</div>
+                            <p class="stat-subtext"><span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span> Click to view trending gaps</p>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ============ ACTIVE PROJECTS DETAIL ============ -->
+                <section id="section-detail-projects" class="page-section">
+                    <button class="back-link" onclick="navigateTo('dashboard')">
+                        <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span> Back to Dashboard
+                    </button>
+                    <div class="section-header">
+                        <div>
+                            <h3 class="gradient-text">Active Projects</h3>
+                            <p class="section-note">How far each project has moved relative to its deadline.</p>
+                        </div>
+                    </div>
+
+                    <div class="card chart-card">
+                        <h4>Progress vs. Deadline</h4>
+                        <canvas id="projectProgressChart"></canvas>
+                    </div>
+
+                    <div class="card data-table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr><th>Project</th><th>Status</th><th>Start</th><th>End</th><th>Days Left</th><th>Progress</th></tr>
+                            </thead>
+                            <tbody id="projectDetailTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ============ SKILLSET DETAIL ============ -->
+                <section id="section-detail-skillset" class="page-section">
+                    <button class="back-link" onclick="navigateTo('dashboard')">
+                        <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span> Back to Dashboard
+                    </button>
+                    <div class="section-header">
+                        <div>
+                            <h3 class="gradient-text">Skillset Overview</h3>
+                            <p class="section-note">How many employees hold each skill, and how much each skill is actually used across projects.</p>
+                        </div>
+                    </div>
+
+                    <div class="charts-grid">
+                        <div class="card chart-card">
+                            <h4>Employees per Skill</h4>
+                            <canvas id="skillsetEmployeesChart"></canvas>
+                        </div>
+                        <div class="card chart-card">
+                            <h4>Skill Usage Across Projects</h4>
+                            <canvas id="skillsetProjectsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card data-table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr><th>Skill</th><th>Category</th><th>Employees</th><th>Projects Using It</th></tr>
+                            </thead>
+                            <tbody id="skillsetDetailTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ============ SKILL GAP DETAIL ============ -->
+                <section id="section-detail-skillgap" class="page-section">
+                    <button class="back-link" onclick="navigateTo('dashboard')">
+                        <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span> Back to Dashboard
+                    </button>
+                    <div class="section-header">
+                        <div>
+                            <h3 class="gradient-text">Skill Gaps</h3>
+                            <p class="section-note">Skills trending in the market, compared against how many employees have them and how many open projects need them.</p>
+                        </div>
+                    </div>
+
+                    <div class="card chart-card">
+                        <h4>Market-Trending Skills: Employees vs. Project Demand</h4>
+                        <canvas id="skillGapChart"></canvas>
+                    </div>
+
+                    <div class="card data-table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr><th>Skill</th><th>Category</th><th>Employees</th><th>Project Demand</th><th>Status</th></tr>
+                            </thead>
+                            <tbody id="skillGapDetailTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ============ SKILL CATALOG ============ -->
+                <section id="section-catalog" class="page-section">
+                    <div class="section-header">
+                        <div>
+                            <h3 class="gradient-text">Global Skill Catalog</h3>
+                            <p class="section-note">Every skill tracked across the company. Skills marked "Market Gap" were added because a project needed them and nobody has them yet.</p>
+                        </div>
+                        <button class="btn-primary rbac-manager" id="openCreateSkillBtn">
+                            <span class="material-symbols-outlined">add</span>
+                            Create New Skill
+                        </button>
+                    </div>
+
+                    <div class="catalog-list" id="globalCatalogList"></div>
+                </section>
+
+                <!-- ============ TALENT SEARCH ============ -->
+                <section id="section-talent" class="page-section">
+                    <div class="section-header">
+                        <div>
+                            <h3 class="gradient-text">Talent Search</h3>
+                            <p class="section-note">Pick a skill to see every employee who has it, their proficiency, department and email.</p>
+                        </div>
+                    </div>
+
+                    <div class="search-controls glass-panel">
+                        <div class="input-group no-icon">
+                            <select id="talentSkillSelect">
+                                <option value="">Select a skill...</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary" id="talentSearchBtn">
+                            <span class="material-symbols-outlined">search</span> Search
+                        </button>
+                    </div>
+
+                    <div class="talent-grid" id="talentGrid">
+                        <div class="empty-state">
+                            <span class="material-symbols-outlined">travel_explore</span>
+                            <p>Select a skill above to find talent</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============ PROJECTS ============ -->
+                <section id="section-projects" class="page-section">
+                    <div class="section-header">
+                        <div>
+                            <h3 class="gradient-text">Projects</h3>
+                            <p class="section-note">Create a project with its required tech stack, then find employees who match &mdash; available now or freeing up within a week.</p>
+                        </div>
+                        <button class="btn-primary rbac-manager" id="openCreateProjectBtn">
+                            <span class="material-symbols-outlined">add</span>
+                            Create Project
+                        </button>
+                    </div>
+
+                    <div class="project-grid" id="projectsGrid"></div>
+                </section>
+
+                <!-- ============ MY PROFILE ============ -->
+                <section id="section-profile" class="page-section">
+                    <div class="card" id="profileInfoCard" style="padding: 1.75rem 2rem;">
+                        <div class="card-header">
+                            <div>
+                                <h3 id="profileName" class="gradient-text">&nbsp;</h3>
+                                <p class="card-meta" id="profileMeta" style="margin-top:0.4rem;">&nbsp;</p>
+                            </div>
+                            <span class="badge" id="profileRoleBadge">&nbsp;</span>
+                        </div>
+                    </div>
+
+                    <div class="section-header" style="margin-top: 0.5rem;">
+                        <h3 class="gradient-text">My Skills</h3>
+                        <button class="btn-primary" id="openAddSkillBtn">
+                            <span class="material-symbols-outlined">add</span>
+                            Add Skill
+                        </button>
+                    </div>
+
+                    <div class="skills-grid" id="mySkillsGrid"></div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ============================================================
+         Add Skill to Profile Modal
+         ============================================================ -->
+    <dialog id="addSkillModal" class="glass-modal">
+        <div class="modal-content">
+            <h2>Add Skill to Profile</h2>
+            <p class="form-error" id="addSkillError"></p>
+            <form id="addSkillForm">
+                <div class="input-group">
+                    <span class="material-symbols-outlined">category</span>
+                    <select id="skillSelect" required>
+                        <option value="" disabled selected>Select a Skill...</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <span class="material-symbols-outlined">military_tech</span>
+                    <select id="proficiencySelect" required>
+                        <option value="" disabled selected>Proficiency Level...</option>
+                        <option value="BEGINNER">Beginner</option>
+                        <option value="INTERMEDIATE">Intermediate</option>
+                        <option value="ADVANCED">Advanced</option>
+                        <option value="EXPERT">Expert</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <input type="number" id="experienceInput" placeholder="Years of Experience" min="0" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('addSkillModal').close()">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Skill</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- ============================================================
+         Create Global Skill Modal
+         ============================================================ -->
+    <dialog id="createSkillModal" class="glass-modal">
+        <div class="modal-content">
+            <h2>Create Global Skill</h2>
+            <p class="subtitle">This skill will appear in the catalog and be flagged as a market/skill gap until employees add it to their profile.</p>
+            <p class="form-error" id="createSkillError"></p>
+            <form id="createSkillForm">
+                <div class="input-group">
+                    <span class="material-symbols-outlined">edit</span>
+                    <input type="text" id="newSkillName" placeholder="Skill Name (e.g., Kotlin)" required>
+                </div>
+                <div class="input-group">
+                    <span class="material-symbols-outlined">label</span>
+                    <input type="text" id="newSkillCategory" placeholder="Category (e.g., Technical)" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('createSkillModal').close()">Cancel</button>
+                    <button type="submit" class="btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- ============================================================
+         Create / Edit Project Modal (unified)
+         ============================================================ -->
+    <dialog id="projectModal" class="glass-modal" style="max-width: 560px;">
+        <div class="modal-content">
+            <h2 id="projectModalTitle">Create Project</h2>
+            <p class="form-error" id="projectFormError"></p>
+            <form id="projectForm">
+                <input type="hidden" id="projectFormId">
+                <div class="input-group">
+                    <span class="material-symbols-outlined">edit</span>
+                    <input type="text" id="projectTitle" placeholder="Project Title" required>
+                </div>
+                <div class="input-group">
+                    <span class="material-symbols-outlined">description</span>
+                    <input type="text" id="projectDescription" placeholder="Description" required>
+                </div>
+                <div class="input-group select-group">
+                    <span class="material-symbols-outlined">flag</span>
+                    <select id="projectStatus" required>
+                        <option value="PLANNING">Planning</option>
+                        <option value="ACTIVE">Active</option>
+                        <option value="COMPLETED">Completed</option>
+                    </select>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <span class="material-symbols-outlined">event</span>
+                        <input type="date" id="projectStartDate">
+                    </div>
+                    <div class="input-group">
+                        <span class="material-symbols-outlined">event_busy</span>
+                        <input type="date" id="projectEndDate">
+                    </div>
+                </div>
+
+                <label class="field-label" style="margin-bottom:0.5rem; display:block;">Required Tech Stack</label>
+                <div class="req-skill-list" id="reqSkillList"></div>
+                <button type="button" class="add-req-skill-btn" id="addReqSkillBtn">+ Add a required skill</button>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('projectModal').close()">Cancel</button>
+                    <button type="submit" class="btn-primary" id="projectFormSubmit">Create Project</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- ============================================================
+         Find Matching Talent Modal
+         ============================================================ -->
+    <dialog id="findTalentModal" class="glass-modal" style="max-width: 640px;">
+        <div class="modal-content">
+            <h2 id="findTalentTitle">Matching Talent</h2>
+            <p class="subtitle" id="findTalentSubtitle">Employees who meet every required skill and are available now or within 7 days.</p>
+            <input type="hidden" id="findTalentProjectId">
+            <div id="findTalentResults" style="display:flex; flex-direction:column; gap:0.75rem; max-height: 50vh; overflow-y:auto; margin-bottom: 1rem;"></div>
+            <div class="modal-actions">
+                <button type="button" class="btn-secondary" onclick="document.getElementById('findTalentModal').close()">Close</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="app.js"></script>
+</body>
+</html>

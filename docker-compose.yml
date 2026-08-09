@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: teamforge-db
+    environment:
+      POSTGRES_DB: teamforge
+      POSTGRES_USER: teamforge
+      POSTGRES_PASSWORD: teamforge
+      TZ: UTC
+    ports:
+      - "5432:5432"
+    volumes:
+      - teamforge_pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: teamforge-app
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=teamforge-db
+    depends_on:
+      - postgres
+
+volumes:
+  teamforge_pgdata:

@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:teamforge}
+    username: ${DB_USER:teamforge}
+    password: ${DB_PASSWORD:teamforge}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  application:
+    name: teamforge
+
+jwt:
+  secret: ${JWT_SECRET:1zHdohifyQc6pP/ZI5e8kydjtS7rQz8F0cd5OZNjWkamMtqPIw+lH08Kpns3U9mWoRXZX7vhEcudIFrKtJzxtQ==}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}
