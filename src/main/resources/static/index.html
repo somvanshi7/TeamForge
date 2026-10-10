@@ -23,6 +23,7 @@
                 <h1 style="font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--primary-light), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">TeamForge</h1>
             </div>
             <nav class="landing-nav">
+                <a href="#demo-creds">Try Demo</a>
                 <a href="#customers">Companies using TeamForge</a>
                 <a href="#features">Features</a>
                 <a href="#about">About</a>
@@ -81,6 +82,31 @@
                         <span class="material-symbols-outlined">trending_up</span>
                         <h4>Skill Gap Forecasting</h4>
                         <p>The moment a project needs a skill nobody has, TeamForge flags it as a gap &mdash; so your next hiring round targets exactly what the business needs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="landing-section" id="demo-creds">
+                <h2 class="section-title">Try the Live Demo</h2>
+                <p class="section-subtitle">Pick a role below and log in to explore TeamForge from that perspective. All accounts share the same password: <code style="background:rgba(139,92,246,0.2); padding:2px 8px; border-radius:4px; color:var(--primary-light); font-weight:600;">password123</code></p>
+                <div class="feature-grid" style="margin-top:1.5rem;">
+                    <div class="card feature-card" style="cursor:pointer;" onclick="prefillLogin('hr@teamforge.com')">
+                        <span class="material-symbols-outlined" style="color:#f59e0b;">shield_person</span>
+                        <h4>HR Director</h4>
+                        <p style="font-family:monospace; font-size:0.85rem; color:var(--primary-light); margin-top:0.5rem;">hr@teamforge.com</p>
+                        <p>Full admin access. Manage all users, projects, skills, and see the complete dashboard with skill gap analytics.</p>
+                    </div>
+                    <div class="card feature-card" style="cursor:pointer;" onclick="prefillLogin('manager1@teamforge.com')">
+                        <span class="material-symbols-outlined" style="color:#3b82f6;">engineering</span>
+                        <h4>Engineering Manager</h4>
+                        <p style="font-family:monospace; font-size:0.85rem; color:var(--primary-light); margin-top:0.5rem;">manager1@teamforge.com</p>
+                        <p>Create projects, define required skills, use the Talent Search matchmaker, and add members to teams.</p>
+                    </div>
+                    <div class="card feature-card" style="cursor:pointer;" onclick="prefillLogin('manager2@teamforge.com')">
+                        <span class="material-symbols-outlined" style="color:#8b5cf6;">palette</span>
+                        <h4>Design Lead</h4>
+                        <p style="font-family:monospace; font-size:0.85rem; color:var(--primary-light); margin-top:0.5rem;">manager2@teamforge.com</p>
+                        <p>Same manager-level access. Great for seeing how multiple managers coexist on the platform.</p>
                     </div>
                 </div>
             </section>

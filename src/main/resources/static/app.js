@@ -202,6 +202,14 @@ function openRegisterModal() {
     authModal.showModal();
 }
 
+function prefillLogin(email) {
+    isLogin = true;
+    setAuthMode();
+    document.getElementById('email').value = email;
+    document.getElementById('password').value = 'password123';
+    authModal.showModal();
+}
+
 function setAuthMode() {
     document.getElementById('nameGroup').style.display = isLogin ? 'none' : 'block';
     document.getElementById('fullName').required = !isLogin;

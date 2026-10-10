@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:teamforge}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:teamforge}?sslmode=${DB_SSLMODE:disable}
     username: ${DB_USER:teamforge}
     password: ${DB_PASSWORD:teamforge}
   jpa:

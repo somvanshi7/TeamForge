@@ -1,0 +1,40 @@
+# Render.com Blueprint — Infrastructure as Code
+# This file lets Render auto-provision the database and web service.
+
+databases:
+  - name: teamforge-db
+    plan: free
+    databaseName: teamforge
+    user: teamforge
+
+services:
+  - type: web
+    name: teamforge
+    plan: free
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: teamforge-db
+          property: host
+      - key: DB_NAME
+        fromDatabase:
+          name: teamforge-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: teamforge-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: teamforge-db
+          property: password
+      - key: DB_PORT
+        fromDatabase:
+          name: teamforge-db
+          property: port
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JAVA_TOOL_OPTIONS
+        value: "-Xmx256m"
