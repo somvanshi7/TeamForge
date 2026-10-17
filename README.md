@@ -4,7 +4,7 @@ A B2B SaaS Internal Talent Intelligence Platform built with **Spring Boot**, **P
 
 ## Live Demo
 
-🔗 **[Try TeamForge Live](https://teamforge.onrender.com)**
+🔗 **[Try TeamForge Live](https://teamforge-addi.onrender.com/)**
 
 ### Demo Credentials
 
@@ -18,12 +18,12 @@ A B2B SaaS Internal Talent Intelligence Platform built with **Spring Boot**, **P
 
 ## Features
 
-- 🧠 **Skill Intelligence** — Employees log their own skills and proficiency levels
-- 🎯 **Smart Team Matching** — Match employees to projects by required skills and availability
-- 📊 **Skill Gap Forecasting** — Identify trending skills your workforce lacks
-- 📈 **Interactive Dashboards** — Chart.js-powered analytics for project progress, skill distribution, and gaps
-- 🔔 **Real-time Notifications** — Alert HR/Managers when talent is matched to projects
-- 🔒 **Role-Based Access Control** — HR, Manager, and Employee permission levels
+- **Skill Intelligence** — Employees log their own skills and proficiency levels
+- **Smart Team Matching** — Match employees to projects by required skills and availability
+- **Skill Gap Forecasting** — Identify trending skills your workforce lacks
+- **Interactive Dashboards** — Chart.js-powered analytics for project progress, skill distribution, and gaps
+- **Real-time Notifications** — Alert HR/Managers when talent is matched to projects
+- **Role-Based Access Control** — HR, Manager, and Employee permission levels
 
 ## Tech Stack
 
