@@ -1,11 +1,5 @@
 # Render.com Blueprint — Infrastructure as Code
-# This file lets Render auto-provision the database and web service.
-
-databases:
-  - name: teamforge-db
-    plan: free
-    databaseName: teamforge
-    user: teamforge
+# Database: Neon PostgreSQL (external, free tier — no expiration)
 
 services:
   - type: web
@@ -15,25 +9,15 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: DB_HOST
-        fromDatabase:
-          name: teamforge-db
-          property: host
+        value: ep-icy-cell-bc5amv1x-pooler.c-16.us-east-1.aws.neon.tech
       - key: DB_NAME
-        fromDatabase:
-          name: teamforge-db
-          property: database
+        value: teamforge
       - key: DB_USER
-        fromDatabase:
-          name: teamforge-db
-          property: user
+        value: neondb_owner
       - key: DB_PASSWORD
-        fromDatabase:
-          name: teamforge-db
-          property: password
+        sync: false  # Set in Render dashboard — do not commit secrets
       - key: DB_PORT
-        fromDatabase:
-          name: teamforge-db
-          property: port
+        value: "5432"
       - key: JWT_SECRET
         generateValue: true
       - key: JAVA_TOOL_OPTIONS

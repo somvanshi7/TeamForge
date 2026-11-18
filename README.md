@@ -28,9 +28,9 @@ A B2B SaaS Internal Talent Intelligence Platform built with **Spring Boot**, **P
 ## Tech Stack
 
 - **Backend:** Java 21, Spring Boot 3.5, Spring Security (JWT), Spring Data JPA
-- **Database:** PostgreSQL 16
+- **Database:** PostgreSQL 16 (Neon — serverless)
 - **Frontend:** Vanilla JavaScript, HTML5, CSS3, Chart.js
-- **Deployment:** Docker, Render.com
+- **Deployment:** Docker, Render.com + Neon.tech
 
 ## Local Development
 
